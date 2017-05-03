@@ -24,6 +24,7 @@ enum preonic_keycodes {
   QWERTY = SAFE_RANGE,
   COLEMAK,
   DVORAK,
+  GAME,
   LOWER,
   RAISE,
   BACKLIT
@@ -179,7 +180,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   {_______, RESET,   _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_DEL},
   {_______, _______, _______, AU_ON,   AU_OFF,  AG_NORM, AG_SWAP, _______,  COLEMAK, _______,  _______, _______},
   {_______, MUV_DE,  MUV_IN,  MU_ON,   MU_OFF,  MI_ON,   MI_OFF,  _______, _______, _______, _______, _______},
-  {_______, _______, _______, _______, _______, _______, DVORAK, _______, _______, _______, _______, QWERTY}
+  {_______, _______, _______, _______, _______, GAME, DVORAK, _______, _______, _______, _______, QWERTY}
 }
 
 
@@ -218,15 +219,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           }
           return false;
           break;
-        // case GAME:
-        //   if (record->event.pressed) {
-        //     #ifdef AUDIO_ENABLE
-        //       PLAY_NOTE_ARRAY(tone_dvorak, false, 0);
-        //     #endif
-        //     persistant_default_layer_set(1UL<<_GAME);
-        //   }
-        //   return false;
-        //   break;
+        case GAME:
+          if (record->event.pressed) {
+            #ifdef AUDIO_ENABLE
+              PLAY_NOTE_ARRAY(tone_dvorak, false, 0);
+            #endif
+            persistant_default_layer_set(1UL<<_GAME);
+          }
+          return false;
+          break;
         case QWERTY:
           if (record->event.pressed) {
             #ifdef AUDIO_ENABLE
