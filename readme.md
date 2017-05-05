@@ -2,7 +2,7 @@
 
 ## Contributing
 
-Clone the qmk_firmware repository, then clone this repo under .../qmk_firmware/keyboards/preonic/keymaps/:
+Clone the qmk_firmware repository, then clone this repo under `.../qmk_firmware/keyboards/preonic/keymaps/`:
 
 ```
 git clone https://github.com/qmk/qmk_firmware.git
@@ -10,7 +10,7 @@ cd qmk_firmware/keyboards/preonic/keymaps
 git clone https://github.com/mr-sigma/preonic-layout.git cadden
 ```
 
-Run the installation script located under the /utils to ensure the Linux Distro has the appropriate programs installed:
+Run the installation script located under the `/utils` to ensure the Linux Distro has the appropriate programs installed:
 
 ```
 # Change to the qmk_firmware directory before executing this
