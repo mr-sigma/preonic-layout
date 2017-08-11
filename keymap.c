@@ -34,6 +34,7 @@ enum preonic_keycodes {
 #define M_CTL_SFT_V M(1)
 #define M_CTL_C M(2)
 #define M_CTL_V M(3)
+#define M_CTL_X M(4)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -106,7 +107,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | M(1) |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  |      |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
- * | M(0) |      |      | M(2) | M(3) |      |      |   [  |   ]  |   =  |   -  |  \   |
+ * | M(0) |      | M(4) | M(2) | M(3) |      |      |   [  |   ]  |   =  |   -  |  \   |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * |      |      |      |      |      |      |      |ISO # |ISO / |      |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -116,7 +117,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_LOWER] = {
   {KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    _______},
   {M_CTL_SFT_V,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    _______},
-  {M_CTL_SFT_C,  _______,   _______, M_CTL_C, M_CTL_V,   _______,   _______,   KC_LBRC, KC_RBRC, KC_EQL, KC_MINS,  KC_BSLS},
+  {M_CTL_SFT_C,  _______, M_CTL_X, M_CTL_C, M_CTL_V,   _______,   _______,   KC_LBRC, KC_RBRC, KC_EQL, KC_MINS,  KC_BSLS},
   {_______, _______,   _______,   _______,   _______,  _______,  _______,  KC_NUHS, KC_NUBS, _______, _______, _______},
   {_______, _______, _______, _______, _______, _______, _______, _______, KC_PGUP, KC_PGDOWN, KC_HOME, KC_END}
 },
@@ -189,6 +190,12 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt) {
         case 3: {
           if (record->event.pressed) {
             return MACRO( D(LCTL), T(V), U(LCTL), END );
+          }
+          break;
+        }
+        case 4: {
+          if (record->event.pressed) {
+            return MACRO( D(LCTL), T(X), U(LCTL), END );
           }
           break;
         }
