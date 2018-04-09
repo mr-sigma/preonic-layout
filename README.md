@@ -21,8 +21,17 @@ sudo util/install_dependencies.sh
 
 Plug in the board, press the reset switch on the board and then run the following:
 
+### *nix
+
 ```
 sudo make clean && sudo make KEYMAP=cadden dfu
+```
+
+### Mac
+
+```
+# Run this in the qmk_firmware directory
+make <keyboard>:<keymap>:dfu
 ```
 
 The keymap should compile and load!
